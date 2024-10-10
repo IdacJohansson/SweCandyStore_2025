@@ -19,6 +19,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
