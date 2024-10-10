@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/IdacJohansson/CSSframeworks_lesson15#readme",
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "normalize.css": "^8.0.1"
   },

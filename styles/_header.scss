@@ -1,0 +1,32 @@
+@import "layout";
+
+header {
+  background-image: url(/images/header_candy_2.png);
+  background-size: cover;
+  background-position:center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 500px;
+  height: 80%;
+  max-width: 1400px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.navbar {
+  margin-top: auto;
+  min-height: 100px;
+  height: 100%;
+  max-width: 1400px;
+  width: 100%;
+}
+
+.navbar-brand {
+  font-family: $heading-font;
+  font-size: 20px;
+}
+
+.nav-item {
+  font-family: $main-font;
+}
