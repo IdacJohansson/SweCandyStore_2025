@@ -1,0 +1,26 @@
+{
+  "name": "cssframeworks_lesson15",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdacJohansson/CSSframeworks_lesson15.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IdacJohansson/CSSframeworks_lesson15/issues"
+  },
+  "homepage": "https://github.com/IdacJohansson/CSSframeworks_lesson15#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "sass": "^1.79.4"
+  }
+}
