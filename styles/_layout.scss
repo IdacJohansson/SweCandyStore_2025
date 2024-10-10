@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Oswald:wght@200..700&display=swap");
+
+$mimiPink: #f7d6e0;
+$lavenderPink: #f2b5d4;
+$mintCream: #eff7f6;
+$celeste: #b2f7ef;
+$nonPhotoBlue: #7bdff2;
+$white: #fff;
+
+$heading-font: "Bungee Inline", sans-serif;
+$main-font: "Oswald", sans-serif;
+
+.bg-mimiPink {
+  background-color: $mimiPink !important;
+}
+
+.text-lavenderPink {
+  color: $lavenderPink !important;
+}
+
+.bg-mintCream {
+  background-color: $mintCream !important;
+}
+
+.bg-celeste {
+  background-color: $celeste !important;
+}
+
+.bg-nonPhotoBlue {
+  background-color: $nonPhotoBlue !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  height: auto;
+  margin: 0px;
+  background-color: $lavenderPink;
+}
+
+main {
+  display: flex;
+  max-width: 1400px;
+  width: 100%;
+  max-height: 2000px;
+  flex-direction: column;
+  background-color: $mintCream;
+}
