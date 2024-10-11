@@ -1,0 +1,27 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@import "layout";
+@import "header";
+
+.col {
+  margin: 10px;
+}
+
+.card {
+  &__body {
+    background-color: #fff;
+    padding: 10px;
+  }
+  &__title {
+    font-family: $main-font;
+  }
+  &__img {
+    width: 300px;
+    height: 300px;
+  }
+  &__text {
+    width: 300px;
+    font-family: $main-font;
+    font-weight: 300;
+  }
+}

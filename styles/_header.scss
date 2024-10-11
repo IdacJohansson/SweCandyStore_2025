@@ -1,17 +1,18 @@
 @import "layout";
 
 header {
-  background-image: url(/images/header_candy_2.png);
+  background-image: url(/images/header_candy_1200.png);
   background-size: cover;
-  background-position:center;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 500px;
   height: 80%;
-  max-width: 1400px;
-  width: 100%;
-  margin-bottom: 20px;
+  @media (max-width: 500px) and (min-width: 320px) {
+    background-image: url(/images/logo.png);
+    background-size: 100px 100px;
+  }
 }
 
 .navbar {
@@ -29,4 +30,8 @@ header {
 
 .nav-item {
   font-family: $main-font;
+}
+
+.navbar-toggler {
+  background-color: $mintCream;
 }
