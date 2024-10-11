@@ -3,6 +3,8 @@
 @import "layout";
 @import "header";
 
+// circle  cards
+
 .card {
   &__body {
     background-color: #fff;
@@ -46,8 +48,27 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.column-hight {
+// card 1
+
+.column-height-300 {
   height: 300px;
+}
+
+// card 2
+
+.column-height-500 {
+  height: 500px;
+}
+
+.img-sale-size{
+    width: 500px;
+    height: 500px;
+}
+
+.img-icecream{
+    max-width: 350px;
+    min-height: 350px;
+
 }
 
 footer {
@@ -67,25 +88,32 @@ footer {
     font-size: 25px;
   }
   .card__text {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
-@media (max-width: 437px) {
+@media (max-width: 536px) and (min-width: 320px) {
+  .container {
+    margin-top: 8px;
+  }
   .card__heading {
-    font-size: 55px;
+    font-size: 50px;
+    padding: 0px;
   }
   .card__title {
-    font-size: 25px;
+    font-size: 20px;
   }
   .card__text {
-    font-size: 16px;
+    font-size: 12px;
   }
   .circle-card {
     width: 200px;
     height: 200px;
   }
-  .column-hight {
+  .column-height-300 {
+    height: auto;
+  }
+  .column-height-500 {
     height: auto;
   }
 }
