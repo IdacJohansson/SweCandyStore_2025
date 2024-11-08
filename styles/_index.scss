@@ -5,6 +5,12 @@
 
 // circle  cards
 
+.cart-circle{
+  display:flex; 
+  align-items: center;
+  justify-content: center;
+}
+
 .card {
   &__body {
     background-color: #fff;
