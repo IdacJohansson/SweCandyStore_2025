@@ -118,8 +118,7 @@ function printCartProducts() {
       cartProductsContainer.appendChild(productDiv);
     });
   } else {
-    document.getElementById("cart-items").innerHTML =
-      "<p>Your cart is empty.</p>";
+    const emptyCartMessage = document.getElementById("empty-cart-message");
   }
 }
 document.addEventListener("DOMContentLoaded", printCartProducts);
