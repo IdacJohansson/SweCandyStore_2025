@@ -4,42 +4,42 @@ const products = [
     name: "Gröna grodor",
     amount: "1 kg",
     price: 13,
-    image: "/images/grona-grodor_picture.png",
+    image: "/images/candy.png",
   },
   {
     id: 2,
     name: "Gott & blandat",
     amount: "1 kg",
     price: 10,
-    image: "/images/gottblandat-original_picture.png",
+    image: "/images/candy2.png",
   },
   {
     id: 3,
     name: "Banana Bubs",
     amount: "1 kg",
     price: 14,
-    image: "/images/Banana_Bubs.png",
+    image: "/images/candy3.png",
   },
   {
     id: 4,
     name: "Hallon-Lakritsskalle",
     amount: "1 kg",
     price: 15,
-    image: "/images/Hallon_Lakritsskalle.png",
+    image: "/images/candy4.png",
   },
   {
     id: 5,
     name: "Juleskum",
     amount: "1 kg",
     price: 9,
-    image: "/images/juleskum_picture.png",
+    image: "/images/candy5.png",
   },
   {
     id: 6,
     name: "Cola flaskor",
     amount: "1 kg",
     price: 11,
-    image: "/images/stora-colaflaskor_picture.png",
+    image: "/images/candy6.png",
   },
 ];
 
@@ -47,19 +47,14 @@ function addToCart(productId) {
   const product = products.find((p) => p.id === productId);
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+  cart = cart.filter((item) => item && item.id);
+
   const existingProduct = cart.find((item) => item.id === productId);
 
   if (existingProduct) {
     existingProduct.quantity += 1;
   } else {
     cart.push({ ...product, quantity: 1 });
-    // cart.push({
-    //     id: product.id,
-    //     name: product.name,
-    //     amount: product.amount,
-    //     price: product.price,
-    //     quantity: 1
-    //   });
   }
 
   // Sparar till localStorage
@@ -78,47 +73,70 @@ function updateCartIndicator() {
     cartCountElement.textContent = totalItems;
   }
 }
-
 document.querySelectorAll(".btn.bg-mimiPink").forEach((button) => {
   const productId = parseInt(button.getAttribute("data-id"));
   button.addEventListener("click", () => addToCart(productId));
 });
 updateCartIndicator();
 
+function removeCartItem(productId) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart = cart.filter((item) => item.id !== productId);
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  updateCartIndicator();
+  printCartProducts();
+}
+
 function printCartProducts() {
   const cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartProductsContainer = document.getElementById("cart-items");
 
   if (cartProducts.length > 0) {
-    const cartProductsContainer = document.getElementById("cart-items");
     cartProductsContainer.innerHTML = "";
 
     cartProducts.forEach((item) => {
-      const productDiv = document.createElement("div");
-      productDiv.classList.add("mb-4");
+      if (item && item.id) {
+        const productDiv = document.createElement("div");
+        productDiv.classList.add("mb-4");
 
-      // Skapa HTML-strukturen för produkten
-      productDiv.innerHTML = `
-                <div class="card">
-                    <div class="card-body d-flex align-items-center">
-                    <img src="${item.image}" alt="${item.name}" width="100" class="me-3">
-                        <div>
-                            <h5 class="card-title">${item.name}</h5>
-                            <p class="card-text">Quantity: ${item.quantity}</p>
-                            <p class="card-text">Price: $${item.price}</p>
-                        </div>
-                        <div class="ms-auto">
-                        <a class="nav-link">
-                            <i class="bi bi-trash3" style="font-size: 24px;"></i>
-                        </a>
-                        </div>
-                    </div>
-                </div>
-            `;
+        productDiv.innerHTML = `
+          <div class="card">
+              <div class="card-body d-flex align-items-center">
+                  <img src="${item.image}" alt="${item.name}" width="100" class="me-3">
+                  <div>
+                      <h5 class="card-title">${item.name}</h5>
+                      <p class="card-text">Quantity: ${item.quantity}</p>
+                      <p class="card-text">Price: $${item.price}</p>
+                  </div>
+                  <div class="ms-auto">
+                      <div class="nav-link">
+                          <i class="bi bi-trash3" style="font-size: 24px;" data-id="${item.id}"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        `;
 
-      cartProductsContainer.appendChild(productDiv);
+        cartProductsContainer.appendChild(productDiv);
+      }
+    });
+
+    const trashIcons = document.querySelectorAll(".bi.bi-trash3");
+    trashIcons.forEach((icon) => {
+      const productId = parseInt(icon.getAttribute("data-id"));
+      icon.addEventListener("click", () => removeCartItem(productId));
     });
   } else {
-    const emptyCartMessage = document.getElementById("empty-cart-message");
+    cartProductsContainer.innerHTML = `
+      <div class="mt-4 mb-4">
+        <h5>Your cart is empty</h5>
+      </div>
+    `;
   }
 }
-document.addEventListener("DOMContentLoaded", printCartProducts);
+document.addEventListener("DOMContentLoaded", () => {
+  printCartProducts();
+  updateCartIndicator();
+});
