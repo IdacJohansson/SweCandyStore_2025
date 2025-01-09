@@ -154,6 +154,8 @@ function printCartProducts() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  printCartProducts();
+  if (document.body.classList.contains("cart-page")) {
+    printCartProducts();
+  }
   updateCartIndicator();
 });
