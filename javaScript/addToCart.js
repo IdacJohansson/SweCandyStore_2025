@@ -57,10 +57,7 @@ function addToCart(productId) {
     cart.push({ ...product, quantity: 1 });
   }
 
-  // Sparar till localStorage
   localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Uppdatera indikatorn
   updateCartIndicator();
 }
 
@@ -73,6 +70,7 @@ function updateCartIndicator() {
     cartCountElement.textContent = totalItems;
   }
 }
+
 document.querySelectorAll(".btn.bg-mimiPink").forEach((button) => {
   const productId = parseInt(button.getAttribute("data-id"));
   button.addEventListener("click", () => addToCart(productId));
@@ -93,8 +91,10 @@ function printCartProducts() {
   const cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
   const cartProductsContainer = document.getElementById("cart-items");
 
+  cartProductsContainer.innerHTML = "";
+
   if (cartProducts.length > 0) {
-    cartProductsContainer.innerHTML = "";
+    let totalPrice = 0;
 
     cartProducts.forEach((item) => {
       if (item && item.id) {
@@ -120,14 +120,30 @@ function printCartProducts() {
         `;
 
         cartProductsContainer.appendChild(productDiv);
+
+        const itemTotal = item.quantity * item.price;
+        totalPrice += itemTotal;
       }
     });
 
-    const trashIcons = document.querySelectorAll(".bi.bi-trash3");
-    trashIcons.forEach((icon) => {
+    const trashIcon = document.querySelectorAll(".bi.bi-trash3");
+    trashIcon.forEach((icon) => {
       const productId = parseInt(icon.getAttribute("data-id"));
       icon.addEventListener("click", () => removeCartItem(productId));
     });
+
+    const summaryDiv = document.createElement("div");
+    summaryDiv.classList.add("card", "mt-4");
+
+    summaryDiv.innerHTML = `
+      <div class="card-body">
+        <h5 class="card-title">Cart Summary</h5>
+        <p><strong>Total Price: $${totalPrice}</strong></p>
+        <p>Total items: ${cartProducts.length}</p>
+      </div>
+    `;
+
+    cartProductsContainer.appendChild(summaryDiv);
   } else {
     cartProductsContainer.innerHTML = `
       <div class="mt-4 mb-4">
@@ -136,6 +152,7 @@ function printCartProducts() {
     `;
   }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   printCartProducts();
   updateCartIndicator();
