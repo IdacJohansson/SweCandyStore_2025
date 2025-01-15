@@ -7,9 +7,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="/styles/_index.css" />
-    <script type="module" src="/javaScript/cart.js"></script>
-    <title>Swedish Candy Shop</title>
+    <script type="module" src="/javaScript/addToCart.js"></script>
+    <link rel="stylesheet" href="/styles/_seeAll.css" />
+    <title>Banana-Bubs</title>
   </head>
   <body
     class="d-flex flex-column align-items-center min-vh-100 bg-lavenderPink"
@@ -29,7 +29,17 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <div></div>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
             <ul class="navbar-nav ms-auto align-items-center">
               <li class="nav-item dropdown">
                 <a
@@ -48,7 +58,9 @@
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="/pages/candy/bananaBubs.html">Banana-Bubs</a>
+                    <a class="dropdown-item" href="/pages/candy/bananaBubs.html"
+                      >Banana-Bubs</a
+                    >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#">Gröna grodor</a>
@@ -68,6 +80,9 @@
                     >
                   </li>
                 </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/index.html">HOME</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/pages/stores.html">OUR STORES</a>
@@ -105,114 +120,36 @@
         </div>
       </nav>
     </header>
-    <main class="container d-flex flex-column bg-mintCream">
-      <!-- Card 1 -->
-      <div class="container-fluid mt-md-5">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-12 col-md-6 bg-white column-height-300">
-            <h2 class="card__heading px-4 py-5">SWEDISH CANDY SHOP</h2>
-          </div>
-          <div class="col-12 col-md-6 bg-white column-height-300">
-            <h3 class="card__title px-4 py-4">
-              THE ULTIMATE ONLINE AND IN-STORE EXPERIENCE
-            </h3>
-            <p class="card__text px-4 py-0">
-              In addition to our online presence, we are excited to offer
-              physical stores in selected countries, allowing customers to
-              experience our candy in person. Whether you're shopping online or
-              visiting one of our stores, you’ll find the same premium quality
-              and exceptional service that Swedish Candy Shop is known for.
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="container-fluid mt-md-5">
-        <div class="container-fluid">
-          <div class="row justify-content-center align-items-center d-flex">
-            <div class="col-12 col-md-6 bg-white column-height-500">
-              <img
-                class="img-fluid img-sale-size"
-                src="/images/sale-7070341_640.png"
-                alt="sales-picture"
-              />
-            </div>
-
-            <div class="col-12 col-md-6 bg-white column-height-500">
-              <div class="row g-2">
-                <h3 class="card__title px-4 py-4">
-                  BIG SALE ON SUMMER-EDITION-CANDY!
-                </h3>
-                <div
-                  class="container d-flex justify-content-center align-items-center"
-                >
-                  <img
-                    class="img-fluid img-icecream"
-                    src="/images/lollie.png"
-                    alt="lollie picture"
-                  />
-                </div>
+    <main class="d-flex flex-column bg-mintCream">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card__body">
+                <h4 class="card__title">Banana Bubs</h4>
+                <img class="card__img" src="/images/candy3.png" alt="" />
+                <p class="card__text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Debitis ab suscipit eius praesentium tempore. Eos, natus
+                  voluptatem laudantium similique provident eligendi at
+                  reiciendis mollitia quia, corporis nemo quas, beatae harum!
+                </p>
+                <button class="btn bg-mimiPink hover-shadow" data-id="3">
+                  BUY
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Circle cards -->
-      <div class="container mt-md-5 mb-5">
-        <div class="row g-1">
-          <div class="col">
-            <div class="card circle-card card-hover">
-              <a href="/pages/candy/seeAll.html">
-                <div class="card__body">
-                  <img
-                    class="card__img"
-                    src="/images/candy.png"
-                    alt=""
-                  />
-                </div>
-              </a>
-              <h4 class="card__title">OUR CANDY</h4>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card circle-card card-hover">
-              <a href="/pages/stores.html">
-                <div class="card__body">
-                  <img
-                    class="card__img"
-                    src="/images/europe-151589_640.png"
-                    alt=""
-                  />
-                </div>
-              </a>
-              <h4 class="card__title">OUR STORES</h4>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card circle-card card-hover">
-              <a href="/pages/contact.html">
-                <div class="card__body">
-                  <img
-                    class="card__img"
-                    src="/images/letter-1132701_640.png"
-                    alt=""
-                  />
-                </div>
-              </a>
-              <h4 class="card__title">CONTACT US</h4>
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
-    <!-- Footer -->
     <footer class="container text-center bg-mimiPink">
       <div class="container">
         <section class="mb-4">
           <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#"
+            href="#!"
             role="button"
             data-mdb-ripple-color="dark"
             ><i class="bi bi-facebook"></i
@@ -220,7 +157,7 @@
           <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#"
+            href="#!"
             role="button"
             data-mdb-ripple-color="dark"
             ><i class="bi bi-twitter"></i
@@ -228,7 +165,7 @@
           <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#"
+            href="#!"
             role="button"
             data-mdb-ripple-color="dark"
             ><i class="bi bi-instagram"></i>
@@ -243,7 +180,6 @@
         <a class="text-body" href="/index.html">SwedishCandyShop</a>
       </div>
     </footer>
-
     <script src="/node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>
