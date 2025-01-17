@@ -2,42 +2,42 @@ const products = [
   {
     id: 1,
     name: "Gröna grodor",
-    amount: "1 kg",
+    amount: "1",
     price: 13,
     image: "/images/candy.png",
   },
   {
     id: 2,
     name: "Gott & blandat",
-    amount: "1 kg",
+    amount: "1",
     price: 10,
     image: "/images/candy2.png",
   },
   {
     id: 3,
     name: "Banana Bubs",
-    amount: "1 kg",
+    amount: "1",
     price: 14,
     image: "/images/candy3.png",
   },
   {
     id: 4,
     name: "Hallon-Lakritsskalle",
-    amount: "1 kg",
+    amount: "1",
     price: 15,
     image: "/images/candy4.png",
   },
   {
     id: 5,
     name: "Juleskum",
-    amount: "1 kg",
+    amount: "1",
     price: 9,
     image: "/images/candy5.png",
   },
   {
     id: 6,
     name: "Cola flaskor",
-    amount: "1 kg",
+    amount: "1",
     price: 11,
     image: "/images/candy6.png",
   },
@@ -94,6 +94,7 @@ function printCartProducts() {
   cartProductsContainer.innerHTML = "";
 
   if (cartProducts.length > 0) {
+    let amountTotal = 0;
     let totalPrice = 0;
 
     cartProducts.forEach((item) => {
@@ -103,26 +104,29 @@ function printCartProducts() {
 
         productDiv.innerHTML = `
           <div class="card">
-              <div class="card-body d-flex align-items-center">
-                  <img src="${item.image}" alt="${item.name}" width="100" class="me-3">
-                  <div>
-                      <h5 class="card-title">${item.name}</h5>
-                      <p class="card-text">Quantity: ${item.quantity}</p>
-                      <p class="card-text">Price: $${item.price}</p>
-                  </div>
-                  <div class="ms-auto">
-                      <div class="nav-link">
-                          <i class="bi bi-trash3" style="font-size: 24px;" data-id="${item.id}"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
+  <div class="card-body d-flex align-items-center">
+    <img src="${item.image}" alt="${item.name}" width="100" class="me-3">
+    <div class="d-flex flex-column">
+      <h5 class="card-title">${item.name}</h5>
+      <p class="card-text mb-1">Quantity: ${item.quantity}</p>
+      <p class="card-text mb-1">Pound: ${item.amount}</p>
+      <p class="card-text mb-1">Price: $${item.price}</p>
+    </div>
+    <div class="ms-auto">
+      <div class="nav-link">
+        <i class="bi bi-trash3 trash-icon" style="font-size: 24px;" data-id="${item.id}"></i>
+      </div>
+    </div>
+  </div>
+</div>
         `;
 
         cartProductsContainer.appendChild(productDiv);
 
         const itemTotal = item.quantity * item.price;
         totalPrice += itemTotal;
+
+        amountTotal += item.amount * item.quantity;
       }
     });
 
@@ -138,8 +142,9 @@ function printCartProducts() {
     summaryDiv.innerHTML = `
       <div class="card-body">
         <h5 class="card-title">Cart Summary</h5>
+        <hr>
         <p><strong>Total Price: $${totalPrice}</strong></p>
-        <p>Total items: ${cartProducts.length}</p>
+        <p><strong>Total Pounds: ${amountTotal}</strong></p>
       </div>
     `;
 
