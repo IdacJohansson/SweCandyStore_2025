@@ -8,11 +8,11 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
     <script type="module" src="/javaScript/addToCart.js"></script>
-    <link rel="stylesheet" href="/styles/_sale.css" />
-    <title>About us</title>
+    <link rel="stylesheet" href="/styles/_cart.css" />
+    <title>Cart</title>
   </head>
   <body
-    class="d-flex flex-column align-items-center min-vh-100 bg-lavenderPink"
+    class="favorite-page d-flex flex-column align-items-center min-vh-100 bg-lavenderPink"
   >
     <header class="container">
       <nav class="navbar navbar-expand-lg">
@@ -29,7 +29,6 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <div></div>
             <ul class="navbar-nav ms-auto align-items-center">
               <li class="nav-item dropdown">
                 <a
@@ -117,7 +116,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/pages/favorites.html"
+                <a class="nav-link" href=""
                   ><i class="bi bi-heart-fill me-5" style="font-size: 24px"></i
                 ></a>
               </li>
@@ -127,63 +126,11 @@
       </nav>
     </header>
     <main class="container d-flex flex-column bg-mintCream">
-      <div class="card-group mt-md-5 mb-md-5">
-        <div class="card">
-          <img
-            src="/images/gällivare.jpg"
-            class="card-img-top"
-            alt="Hollywood Sign on The Hill"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Where we starded</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-            <a class="icon-link icon-link-hover" href="#">
-              Read more
-              <i class="bi bi-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            src="/images/candy-50838_640.jpg"
-            class="card-img-top"
-            alt="Hollywood Sign on The Hill"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Production</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-            <a class="icon-link icon-link-hover" href="#">
-              Read more
-              <i class="bi bi-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        <div class="card">
-          <img
-            src="/images/candies-539695_640.jpg"
-            class="card-img-top"
-            alt="Hollywood Sign on The Hill"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Retails</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-            <a class="icon-link icon-link-hover" href="#">
-              Read more
-              <i class="bi bi-arrow-right"></i>
-            </a>
-          </div>
+      <div class="container mt-md-5">
+        <h1 class="mb-3">My Favorites</h1>
+        <div id="favorite-items" class="row">
+          <div id="empty-cart-message"></div>
+          <!-- Produkt-data -->
         </div>
       </div>
     </main>
@@ -193,7 +140,7 @@
           <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#"
+            href="#!"
             role="button"
             data-mdb-ripple-color="dark"
             ><i class="bi bi-facebook"></i
@@ -201,7 +148,7 @@
           <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#"
+            href="#!"
             role="button"
             data-mdb-ripple-color="dark"
             ><i class="bi bi-twitter"></i
@@ -209,7 +156,7 @@
           <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#"
+            href="#!"
             role="button"
             data-mdb-ripple-color="dark"
             ><i class="bi bi-instagram"></i>
@@ -224,7 +171,6 @@
         <a class="text-body" href="/index.html">SwedishCandyShop</a>
       </div>
     </footer>
-
     <script src="/node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   </body>

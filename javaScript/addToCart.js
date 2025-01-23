@@ -104,17 +104,17 @@ function printCartProducts() {
 
         productDiv.innerHTML = `
           <div class="card">
-  <div class="card-body d-flex align-items-center">
-    <img src="${item.image}" alt="${item.name}" width="100" class="me-3">
+  <div class="card__body d-flex align-items-center">
+    <img src="${item.image}" alt="${item.name}" width="100" class="card__img me-3">
     <div class="d-flex flex-column">
-      <h5 class="card-title">${item.name}</h5>
-      <p class="card-text mb-1">Quantity: ${item.quantity}</p>
-      <p class="card-text mb-1">Pound: ${item.amount}</p>
-      <p class="card-text mb-1">Price: $${item.price}</p>
+      <h5 class="card__title">${item.name}</h5>
+      <p class="card__text mb-1">Quantity: ${item.quantity}</p>
+      <p class="card__text mb-1">Pound: ${item.amount}</p>
+      <p class="card__text mb-1">Price: $${item.price}</p>
     </div>
     <div class="ms-auto">
       <div class="nav-link">
-        <i class="bi bi-trash3 trash-icon" style="font-size: 24px;" data-id="${item.id}"></i>
+        <i class="bi bi-trash3 trash-icon m-3" style="font-size: 24px;" data-id="${item.id}"></i>
       </div>
     </div>
   </div>
@@ -140,8 +140,8 @@ function printCartProducts() {
     summaryDiv.classList.add("card", "mt-4");
 
     summaryDiv.innerHTML = `
-      <div class="card-body">
-        <h5 class="card-title">Cart Summary</h5>
+      <div class="card__body">
+        <h5 class="card__title">Cart Summary</h5>
         <hr>
         <p><strong>Total Price: $${totalPrice}</strong></p>
         <p><strong>Total Pounds: ${amountTotal}</strong></p>
@@ -152,7 +152,84 @@ function printCartProducts() {
   } else {
     cartProductsContainer.innerHTML = `
       <div class="mt-4 mb-4">
-        <h5>Your cart is empty</h5>
+        <h5>Your cart is empty!</h5>
+      </div>
+    `;
+  }
+}
+
+function addToFavorites(productId) {
+  const product = products.find((p) => p.id === productId);
+  let fav = JSON.parse(localStorage.getItem("favorite")) || [];
+
+  fav = fav.filter((item) => item && item.id);
+
+  const existingFavProduct = fav.find((item) => item.id === productId);
+
+  if (existingFavProduct) {
+    existingFavProduct.quantity += 1;
+  } else {
+    fav.push({ ...product, quantity: 1 });
+  }
+
+  localStorage.setItem("favorite", JSON.stringify(fav));
+}
+
+document.querySelectorAll(".btn.bg-lavenderPink").forEach((button) => {
+  const productId = parseInt(button.getAttribute("data-id"));
+  button.addEventListener("click", () => addToFavorites(productId));
+});
+
+function removeFavItem(productId) {
+  let fav = JSON.parse(localStorage.getItem("favorite")) || [];
+
+  fav = fav.filter((item) => item.id !== productId);
+  localStorage.setItem("favorite", JSON.stringify(fav));
+
+  printFavoriteProducts();
+}
+
+function printFavoriteProducts() {
+  const favProducts = JSON.parse(localStorage.getItem("favorite")) || [];
+  const favProductsContainer = document.getElementById("favorite-items");
+
+  favProductsContainer.innerHTML = "";
+
+  if (favProducts.length > 0) {
+    favProducts.forEach((item) => {
+      if (item && item.id) {
+        const favProductDiv = document.createElement("div");
+        favProductDiv.classList.add("mb-4");
+
+        favProductDiv.innerHTML = `
+          <div class="card">
+  <div class="card-body d-flex align-items-center">
+    <img src="${item.image}" alt="${item.name}" width="100" class="card__img me-3">
+    <div class="d-flex flex-column">
+      <h5 class="card__title">${item.name}</h5>
+      <p class="card__text mb-1">Pound: ${item.amount}</p>
+      <p class="card__text mb-1">Price: $${item.price}</p>
+    </div>
+    <div class="ms-auto">
+      <div class="nav-link">
+        <style= class="bi bi-heartbreak trash-icon m-5" style="font-size: 24px;" data-id="${item.id}"></bi>
+      </div>
+    </div>
+  </div>
+</div>
+        `;
+        favProductsContainer.appendChild(favProductDiv);
+      }
+      const heartBreakIcon = document.querySelectorAll(".bi.bi-heartbreak");
+      heartBreakIcon.forEach((icon) => {
+        const productId = parseInt(icon.getAttribute("data-id"));
+        icon.addEventListener("click", () => removeFavItem(productId));
+      });
+    });
+  } else {
+    favProductsContainer.innerHTML = `
+      <div class="mt-4 mb-4">
+        <h5>No favorites here!</h5>
       </div>
     `;
   }
@@ -161,6 +238,8 @@ function printCartProducts() {
 document.addEventListener("DOMContentLoaded", () => {
   if (document.body.classList.contains("cart-page")) {
     printCartProducts();
+  } else if (document.body.classList.contains("favorite-page")) {
+    printFavoriteProducts();
   }
   updateCartIndicator();
 });
