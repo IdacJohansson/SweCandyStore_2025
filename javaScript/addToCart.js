@@ -202,24 +202,24 @@ function printFavoriteProducts() {
         favProductDiv.classList.add("mb-4");
 
         favProductDiv.innerHTML = `
-          <div class="card">
-  <div class="card-body d-flex align-items-center">
-    <img src="${item.image}" alt="${item.name}" width="100" class="card__img me-3">
-    <div class="d-flex flex-column">
-      <h5 class="card__title">${item.name}</h5>
-      <p class="card__text mb-1">Pound: ${item.amount}</p>
-      <p class="card__text mb-1">Price: $${item.price}</p>
-    </div>
-      <div class="ms-auto d-flex">
-      <div class="nav-link position-relative">
-        <style= class="bi bi-heartbreak trash-icon m-3" style="font-size: 24px;" data-id="${item.id}"></bi>
-      </div>
-      <div class="nav-link">
-        <style= class="bi bi-bag-plus trash-icon m-3" style="font-size: 24px;" data-id="${item.id}"></bi>
-      </div>
-    </div>
-  </div>
-</div>
+            <div class="card">
+              <div class="card-body d-flex align-items-center">
+                  <img src="${item.image}" alt="${item.name}" width="100" class="card__img me-3">
+              <div class="d-flex flex-column">
+                  <h5 class="card__title">${item.name}</h5>
+                  <p class="card__text mb-1">Pound: ${item.amount}</p>
+                  <p class="card__text mb-1">Price: $${item.price}</p>
+              </div>
+              <div class="ms-auto d-flex">
+                  <div class="nav-link position-relative">
+                  <style= class="bi bi-heartbreak trash-icon m-3" style="font-size: 24px;" data-id="${item.id}"></bi>
+              </div>
+              <div class="nav-link">
+                  <style= class="bi bi-bag-plus trash-icon m-3" style="font-size: 24px;" data-id="${item.id}"></bi>
+              </div>
+            </div>
+          </div>
+        </div>
         `;
         favProductsContainer.appendChild(favProductDiv);
       }
