@@ -210,9 +210,12 @@ function printFavoriteProducts() {
       <p class="card__text mb-1">Pound: ${item.amount}</p>
       <p class="card__text mb-1">Price: $${item.price}</p>
     </div>
-    <div class="ms-auto">
+      <div class="ms-auto d-flex">
+      <div class="nav-link position-relative">
+        <style= class="bi bi-heartbreak trash-icon m-3" style="font-size: 24px;" data-id="${item.id}"></bi>
+      </div>
       <div class="nav-link">
-        <style= class="bi bi-heartbreak trash-icon m-5" style="font-size: 24px;" data-id="${item.id}"></bi>
+        <style= class="bi bi-bag-plus trash-icon m-3" style="font-size: 24px;" data-id="${item.id}"></bi>
       </div>
     </div>
   </div>
@@ -224,6 +227,11 @@ function printFavoriteProducts() {
       heartBreakIcon.forEach((icon) => {
         const productId = parseInt(icon.getAttribute("data-id"));
         icon.addEventListener("click", () => removeFavItem(productId));
+      });
+
+      document.querySelectorAll(".bi.bi-bag-plus").forEach((button) => {
+        const productId = parseInt(button.getAttribute("data-id"));
+        button.addEventListener("click", () => addToCart(productId));
       });
     });
   } else {
